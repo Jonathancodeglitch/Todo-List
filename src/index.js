@@ -1,21 +1,29 @@
-//my todos are going to be an object that would be dynamically created (we can use a class or factory module for this)
+// when you click on add task btn open task modal and get task info
+// render the task to the dom with the object collected from the task detail
+//when you click del btn on the todo ,del that todo
 
-//my tods properties should have title ,desscription ,due Date ,piority (optional note and checkList);
+//when the view is clicked on the todo ,display details of the todo
+//when the edit is clicked display a modal and change that todo info to the new one
 
-//your todo list should have a project or seperate list of todos
+//when i click one home display all the todos
+//when i click on today show me all todos (which date is equal to todays date)
+//when i click on this week show me all todos  (which are in the range of 7 days)
 
-//When a user first opens the app, there should be some sort of ‘default’ project to which all of their todos are put. Users should be able to create new projects and choose which project their todos go into.
+//when i click on add project btn display a modal
+//get project name and display it to the dom
+//when project name is clicked show corresponding task
 
-//You should separate your application logic (i.e. creating new todos, setting todos as complete, changing todo priority etc.) from the DOM-related stuff, so keep all of those things in separate modules
+import { showModal, closeModal } from './modal';
+import toggleNavigation from './toggle_nav';
+import { domController } from './DomStuff';
 
-//your todo app should be able to do the following
-//view all projects
-//view all todos in each project (probably just the title and duedate… perhaps changing color for different priorities)
-//expand a single todo to see/edit its details
-//delete a todo
+//hide and show sidebar on mobile device for responsiveness
+const sidebar = document.getElementById('aside');
+const menu = document.getElementById('menu');
+toggleNavigation(menu, sidebar);
 
-//date-fns  library for date and time
 
-// use localStorage for storage
-
-console.log('let us get started!!!!!!!!');
+document.addEventListener('DOMContentLoaded', () => {
+  //render todoHtml to the dom from storage
+  domController.renderTodo();
+});

@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
+:root{
+    --header-color:#5C8374;
+    --text-color:rgb(26, 25, 25);
+    --aside-color: #93B1A6;
+    --aside_active_color:#486e60;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+   color: var(--text-color);
+    line-height: 1.2;
+   font-family: 'Open Sans', sans-serif;
+}
+
+.container{
+    max-width: 1400px;
+    margin:  0 auto;
+    width: 100%;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.flex-apart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* header */
+
+header{
+    padding: 20px 10px;
+    background-color: var(--header-color);
+    color: #fff;
+}
+
+.logo{
+    gap: 10px;
+}
+
+.logo i{
+   font-size: 1.4rem;
+}
+
+.logo-text{
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.menu{
+    font-size: 1.5rem;
+}
+
+/* todos section */
+
+.todo-list-section{
+    min-height: 100vh;
+   
+}
+
+.aside{
+    padding:20px 10px 20px 10px;
+    background-color: #93B1A6;
+    display: none;
+}
+
+.aside.show{
+    display: block;
+}
+
+.default-section,
+.project-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3px;
+}
+
+
+.aside button{
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    background-color: transparent;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-color);
+    text-transform:capitalize;
+}
+
+.aside button:not(.add-project):hover{
+    font-weight: 700;
+    background-color:var(--aside_active_color) ;
+}
+
+.aside .default-section button:first-child{
+    gap: 10px;
+}
+
+.notify{
+    background-color: rgb(250, 137, 137);
+    color: #fff;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .70rem;
+}
+
+.default-section .notify{
+    margin-left: auto;
+}
+
+/* project */
+.project-section {
+    margin-top:15px;
+}
+
+.project-section > *+*{
+    margin-top:15px;
+}
+
+.project-section h1{
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform:capitalize;
+}
+
+.project .fa-trash-alt{
+    margin-left: auto;
+}
+
+.add-project{
+    margin-top: 20px;
+}
+
+/* main */
+
+.main{
+    padding:20px 15px;
+    padding-top:20px ;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.section-name{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.todo-container{
+    margin-top: 20px;
+}
+
+.todo-container > *+*{
+    margin-top: 15px;
+}
+
+.todo{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.2);
+    padding: 10px;
+}
+
+.todo .fa-eye{
+    margin-left: auto;
+}
+
+.todo .title{
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.todo .date{
+    font-size: .95rem;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.todo i{
+   font-weight: 400;
+   cursor: pointer;
+}
+
+.add-task-btn{
+    display: inline-block;
+    margin-top: 20px;
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+/* modal */
+
+dialog{
+  position: fixed; 
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  outline: none;
+  border: none;
+  overflow: hidden;
+  max-width: 300px;
+  width: 90%;
+}
+
+::backdrop {
+    background-color: rgba(0,0,0,0.4);    
+}
+
+.modal .modal-header{
+    background-color: var(--aside_active_color);
+    padding: 10px;
+    color: #fff;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.modal .modal-header span{
+    font-size: 1.2rem;
+}
+
+.modal .modal-header i{
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.modal .modal-content{
+   padding: 10px;
+   padding-bottom: 20px;
+}
+
+.modal-content > *+*{
+    margin-top: 10px;
+}
+
+.modal-content label{
+    display: inline-block;
+    margin-bottom: 3px;
+    width:100%;
+}
+
+.modal .modal-content input,
+.modal .modal-content textarea
+{
+   width: 100%;
+   outline: none;
+   padding: 8px;
+   font-size: .90rem;
+   font-weight: 700;
+}
+
+.modal .modal-content .modal-btn{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal .modal-content .modal-btn .btn{
+    background-color: var(--aside_active_color);
+    color: #fff;
+    font-size: 1rem;
+    border: 0;
+    padding: 7px 15px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+/* piority */
+
+
+.piority {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.piority legend{
+    font-weight: 400;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+}
+
+.piority label{
+    display: flex;
+    align-items: center;
+    width: auto;
+    gap: 5px;
+    margin: 0px;
+    font-size: .80rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.piority .high {
+    accent-color: green;
+}
+.piority .low {
+   
+    accent-color: red;
+}
+
+.piority  .medium{
+    accent-color:grey;
+}
+
+/* view modal */
+
+.modal-content .detail{
+   font-size: 1.1rem;
+   font-weight: 700;
+   text-transform: capitalize;
+}
+
+.modal-content .detail span{
+   font-size: 1rem;
+   font-weight: 400;
+   display: inline-block;
+   margin-left: 3px;
+}
+
+
+/* destop views */
+
+@media (min-width:550px) {
+    .menu{
+        display: none;
+    }
+
+    .logo i,
+    .logo-text{
+       font-size: 1.7rem;
+    }
+    
+    /* todo-list-section */
+    .todo-list-section{
+        display: grid;
+        grid-template-columns: 1.4fr 2fr;
+        padding-top:0px;
+    }
+
+    /* aside */
+    .aside{
+        display: block;
+    }
+
+    .aside,
+    .main{
+      padding-top: 30px;
+    }
+    
+    
+}
+
+@media (min-width:800px) {
+    
+    header{
+        padding: 20px;
+    }
+    .menu{
+        display: none;
+    }
+
+    .logo i,
+    .logo-text{
+       font-size:2rem;
+    }
+    /* todo-list-section */
+    .todo-list-section{
+        grid-template-columns: minmax(0,300px) 1fr;
+    }
+    
+    /* aside */
+    .main{
+        padding-inline: 20px;
+    }
+    .aside{
+        padding: 0px 20px;
+        padding-top: 40px;
+    }
+    
+    
+}
