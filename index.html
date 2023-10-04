@@ -3,10 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/1bcdf3cd45.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../src/style.css">
     <title>TodoList</title>
 </head>
 <body>
-    
+    <div id="content">
+            <!-- header -->
+        <header>
+            <div class="container flex-apart">
+                <div class="logo flex">
+                    <span class="logo-text">Todo-List</span>
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <!-- menu -->
+                <i class="fas fa-bars menu" id="menu"></i>
+                <!-- <i class="fas fa-times"></i> -->
+            </div>
+        </header>
+        <!-- todo-list-section-->
+        <div class="todo-list-section container">
+            <aside class="aside" id="aside">
+                <!-- default section -->
+                <div class="default-section">
+                    <button class="default">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                        <span class="notify">6</span>
+                    </button>
+                    <button class="default">
+                        <i class="fas fa-calendar-week"></i>
+                        <span>today</span>
+                        <span class="notify">1</span>
+                    </button>
+                    <button class="default">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>the weekend</span>
+                        <span class="notify">3</span>
+                    </button>
+                    <button class="default">
+                        <i class="fas fa-star"></i>
+                        <span>starred</span>
+                        <span class="notify">1</span>
+                    </button>
+                </div>
+                <!-- project section -->
+                <div class="project-section">
+                    <h1>projects</h1>
+                    <div class="project-container">
+                        <button class="project">
+                            <i class="fas fa-tasks"></i>
+                            <span>read</span>
+                            <i class="fas fa-trash-alt"></i>
+                            <span class="notify">2</span>
+                        </button>
+                        <button class="project">
+                            <i class="fas fa-tasks"></i>
+                            <span>swim</span>
+                            <i class="fas fa-trash-alt"></i>
+                            <span class="notify">2</span>
+                        </button>
+                        <button class="project">
+                            <i class="fas fa-tasks"></i>
+                            <span>cook</span>
+                            <i class="fas fa-trash-alt"></i>
+                            <span class="notify">2</span>
+                        </button>
+                    </div>
+                    <!-- add project btn -->
+                    <button class="add-project open-modal-btn" data-modal="add-project-modal">
+                        <i class="fas fa-plus"></i>
+                        add project
+                    </button>
+                </div>
+            </aside>
+            <!-- main -->
+            <main class="main" id="main">
+                <h1 class="section-name">Home</h1>
+                <div class="todo-container" id="todo-container">
+                    <!-- todos -->
+                    <!-- <div class="todo">
+                        <span class="title">Bath</span>
+                        <span class="date">17 sept</span>
+                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <div class="todo">
+                        <span class="title">SWim</span>
+                        <span class="date">17 sept</span>
+                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <div class="todo">
+                        <span class="title">Make money</span>
+                        <span class="date">17 sept</span>
+                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-trash-alt"></i>
+                    </div> -->
+                </div>
+                <!-- add task btn-->
+                <button class="add-task-btn open-modal-btn" data-modal="add-task-modal">
+                    <i class="fas fa-plus"></i>
+                    add task
+                </button>
+            </main>
+        </div> 
+        <!-- modals -->
+
+        <!-- add project modal -->
+        <dialog class="modal" id="add-project-modal">
+            <form>
+                <div class="modal-header flex-apart">
+                    <span>create a new project</span>
+                    <i class="fas fa-times close-modal"></i>
+                </div>
+                <div class="modal-content">
+                <input type="text" placeholder="Enter Project Name">
+                <div class="modal-btn">
+                    <button class="btn">Save</button>
+                </div>
+                </div>
+            </form>
+        </dialog>
+
+        <!-- add task modal -->
+        <dialog class="modal" id="add-task-modal">
+            <form>
+                <div class="modal-header flex-apart">
+                    <span>add a todo</span>
+                    <i class="fas fa-times close-modal"></i>
+                </div>
+                    <div class="modal-content">
+                    <input type="text" placeholder="Title" id="title">
+                    <textarea placeholder="Description" id="description"></textarea>
+                    <label>
+                        Due Date:
+                        <input type="date" placeholder="Title" id="duedate">
+                    </label>
+                    
+                    <div class="flex piority">
+                        <legend>Piority:</legend>
+                        <label>
+                            <input type="radio" name="piority"  value ="high" class="high" data-add="piority" checked>
+                            High
+                        </label>
+                        <label>
+                            <input type="radio" name="piority"  value ="medium" class="medium"  data-add="piority">
+                            Medium
+                        </label>
+                        <label>
+                            <input type="radio" name="piority" value ="low" class="low"  data-add="piority">
+                            Low
+                        </label>
+                    </div>
+                    <div class="modal-btn">
+                        <button class="btn" id="task-btn">Save</button>
+                    </div>
+                    </div>
+            </form>
+        </dialog>
+
+        <!-- edit task modal -->
+        <dialog class="modal" id="edit-task-modal">
+            <form>
+                <div class="modal-header flex-apart">
+                    <span>Edit Todo</span>
+                    <i class="fas fa-times close-modal"></i>
+                </div>
+                    <div class="modal-content" id="edit-task-content">
+                    
+                    </div>
+            </form>
+        </dialog>
+
+        <!-- view task modal -->
+        <dialog class="modal" id="view-task-modal">
+            <form>
+                <div class="modal-header flex-apart">
+                    <span>Details</span>
+                    <i class="fas fa-times close-modal"></i>
+                </div>
+                    <div class="modal-content" id="view-task">
+                    <div class="detail">Project:<span>None</span></div>
+                    <div class="detail">Title:<span>the bag</span></div>
+                    <div class="detail" >
+                        Description: 
+                        <span>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. At tenetur iste quod, suscipit asperiores
+                        </span>
+                    </div>
+                    <div class="detail">Due-date:<span>1Ist October 2023</span></div>
+                    <div class="detail">Piority:<span>High</span></div>
+                    </div>
+            </form>
+        </dialog> 
+    </div>
     <script src="bundle.js"></script>
 </body>
 </html>
