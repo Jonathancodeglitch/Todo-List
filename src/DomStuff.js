@@ -1,7 +1,7 @@
 import { todos } from './todoList';
 
 const domController = (() => {
-  const todoList = todos.getTodoList();
+ // const todoList = todos.getTodoList();
 
   const createTodoHtml = (task, index) => {
     return `<div class="todo" data-id=${index}>
@@ -12,8 +12,9 @@ const domController = (() => {
                   <i class="fas fa-trash-alt del-task-btn"></i>
               </div>`;
   };
+  
 
-  const renderTodo = () => {
+  const renderTodo = (todoList) => {
     const todoContainer = document.getElementById('todo-container');
     todoContainer.innerHTML = todoList
       .map((task, index) => {
@@ -87,11 +88,54 @@ const domController = (() => {
     editTaskContainer.innerHTML = createEditTaskHtml(index);
   };
 
+  const createHomeHtml = () => {
+    return ` <h1 class="section-name">Home</h1>
+            <div class="todo-container" id="todo-container">
+            
+            </div>
+            <!-- add task btn-->
+            <button class="add-task-btn open-modal-btn" data-modal="add-task-modal">
+                <i class="fas fa-plus"></i>
+                add task
+            </button>
+           `;
+  };
+
+  const main = document.getElementById('main');
+
+  const renderHomeHtml = () => {
+    main.innerHTML = createHomeHtml();
+    renderTodo();
+  };
+
+  const createTodayHtml = () => {
+    return ` <h1 class="section-name">Today</h1>
+    <div class="todo-container" id="todo-container">
+    
+    </div>
+   `;
+  };
+
+  const renderTodayHtml = (todayTodoList) => {
+    main.innerHTML = createTodayHtml();
+    renderTodo(todayTodoList)
+  };
+
+  const createWeekHtml = () => {
+    return ` <h1 class="section-name">This Week</h1>
+    <div class="todo-container" id="todo-container">
+    
+    </div>
+   `;
+  };
+
   renderViewTask;
   return {
     renderTodo,
     renderViewTask,
     renderEditTaskHtml,
+    renderHomeHtml,
+    renderTodayHtml,
   };
 })();
 

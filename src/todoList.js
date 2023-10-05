@@ -1,5 +1,6 @@
 //import { showModal, closeModal } from './modal';
 import { domController } from './DomStuff';
+import { format } from 'date-fns';
 
 class TodoListObj {
   constructor(title, description, dueDate, piority, project) {
@@ -14,9 +15,27 @@ class TodoListObj {
 //responsible for todoList functionality
 const todos = (() => {
   let todoList = [
-    new TodoListObj('name 1', 'desc 1', '2023-10-04', 'medium', 'none'),
-    new TodoListObj('name 2', 'desc 2', '2023-10-04', 'low', 'none'),
-    new TodoListObj('name 3', 'desc 3', '2023-10-04', 'high', 'none'),
+    new TodoListObj(
+      'name 1',
+      'desc 1',
+      `${format(new Date(`2023-10-04T00:00`), 'dd/MM/yyyy')}`,
+      'medium',
+      'none'
+    ),
+    new TodoListObj(
+      'name 2',
+      'desc 2',
+      `${format(new Date(`2023-10-04T00:00`), 'dd/MM/yyyy')}`,
+      'low',
+      'none'
+    ),
+    new TodoListObj(
+      'name 3',
+      'desc 3',
+      `${format(new Date(`2023-10-04T00:00`), 'dd/MM/yyyy')}`,
+      'high',
+      'none'
+    ),
   ];
 
   const getTodoList = () => todoList;
@@ -49,7 +68,7 @@ const todos = (() => {
         new TodoListObj(
           title.value,
           description.value,
-          dueDate.value,
+          format(new Date(`${dueDate.value}T00:00`), 'dd/MM/yyyy'),
           getSelectedPiority(piority),
           'none'
         )
@@ -60,18 +79,18 @@ const todos = (() => {
       //close modal
       addTaskmodal.close();
       //render todoList
-      domController.renderTodo();
+      domController.renderTodo(todoList);
     }
   };
 
   /* delete task from todoList */
   const deleteTask = (e) => {
     let target = e.target;
-    let detBtn = target.classList.contains('del-task-btn');
-    if (detBtn) {
+    let delBtn = target.classList.contains('del-task-btn');
+    if (delBtn) {
       let index = target.parentNode.dataset.id;
       todoList.splice(index, 1);
-      domController.renderTodo();
+      domController.renderTodo(todoList);
     }
   };
 
@@ -81,7 +100,7 @@ const todos = (() => {
     let viewTaskBtn = target.classList.contains('view-task-btn');
     if (viewTaskBtn) {
       let index = target.parentNode.dataset.id;
-      domController.renderViewTask(index);
+      domController.renderViewTask(tod);
     }
   };
 
@@ -117,7 +136,7 @@ const todos = (() => {
         todoList[index].dueDate = editDueDate.value;
         todoList[index].piority = getSelectedPiority(editPiority);
         //render the new todo
-        domController.renderTodo();
+        domController.renderTodo(todoList);
         //close modal
         editModal.close();
       }
