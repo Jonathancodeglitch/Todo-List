@@ -10,8 +10,8 @@
 <body>
     <div id="content">
             <!-- header -->
-        <header>
-            <div class="container flex-apart">
+        <header class="container">
+            <div class="flex-apart">
                 <div class="logo flex">
                     <span class="logo-text">Todo-List</span>
                     <i class="fas fa-book-open"></i>
@@ -41,11 +41,11 @@
                         <span>this week</span>
                         <span class="notify">3</span>
                     </button>
-                    <!-- <button class="default">
+                    <button class="default">
                         <i class="fas fa-star"></i>
                         <span>starred</span>
                         <span class="notify">1</span>
-                    </button> -->
+                    </button>
                 </div>
                 <!-- project section -->
                 <div class="project-section">
@@ -81,7 +81,28 @@
             <main class="main" id="main">
                 <h1 class="section-name">Home</h1>
                 <div class="todo-container" id="todo-container">
-                   
+                    <!-- todo -->
+                    <div class="todo">
+                        <span class="title">Clean</span>
+                        <span class="date">12th Sept</span>
+                        <i class="fas fa-eye open-modal-btn view-task-btn" data-modal="view-task-modal"></i>
+                        <i class="fas fa-edit open-modal-btn edit-task-btn" data-modal="edit-task-modal"></i>
+                        <i class="fas fa-trash-alt del-task-btn"></i>
+                    </div>
+                    <div class="todo">
+                        <span class="title">Cook</span>
+                        <span class="date">12th Sept</span>
+                        <i class="fas fa-eye open-modal-btn view-task-btn" data-modal="view-task-modal"></i>
+                        <i class="fas fa-edit open-modal-btn edit-task-btn" data-modal="edit-task-modal"></i>
+                        <i class="fas fa-trash-alt del-task-btn"></i>
+                    </div>
+                    <div class="todo">
+                        <span class="title">POOP</span>
+                        <span class="date">12th Sept</span>
+                        <i class="fas fa-eye open-modal-btn view-task-btn" data-modal="view-task-modal"></i>
+                        <i class="fas fa-edit open-modal-btn edit-task-btn" data-modal="edit-task-modal"></i>
+                        <i class="fas fa-trash-alt del-task-btn"></i>
+                    </div>
                 </div>
                 <!-- add task btn-->
                 <button class="add-task-btn open-modal-btn" data-modal="add-task-modal">
@@ -110,7 +131,7 @@
 
         <!-- add task modal -->
         <dialog class="modal" id="add-task-modal">
-            <form>
+            <form id="add-todo-form">
                 <div class="modal-header flex-apart">
                     <span>add a todo</span>
                     <i class="fas fa-times close-modal"></i>
@@ -126,20 +147,20 @@
                     <div class="flex piority">
                         <legend>Piority:</legend>
                         <label>
-                            <input type="radio" name="piority"  value ="high" class="high" data-add="piority" checked>
+                            <input type="radio" name="piority"  value ="High" class="high" data-add="piority" checked>
                             High
                         </label>
                         <label>
-                            <input type="radio" name="piority"  value ="medium" class="medium"  data-add="piority">
+                            <input type="radio" name="piority"  value ="Medium" class="medium"  data-add="piority">
                             Medium
                         </label>
                         <label>
-                            <input type="radio" name="piority" value ="low" class="low"  data-add="piority">
+                            <input type="radio" name="piority" value ="Low" class="low"  data-add="piority">
                             Low
                         </label>
                     </div>
                     <div class="modal-btn">
-                        <button class="btn" id="task-btn">Save</button>
+                        <button class="btn" id="add-to-btn">Save</button>
                     </div>
                     </div>
             </form>
@@ -153,7 +174,30 @@
                     <i class="fas fa-times close-modal"></i>
                 </div>
                     <div class="modal-content" id="edit-task-content">
-                    
+                        <input type="text" placeholder="Title" id="edit-title">
+                          <textarea placeholder="Description" id="edit-description"></textarea>
+                          <label>
+                              Due Date:
+                              <input type="date"  id="edit-dueDate">
+                          </label>
+                          <div class="flex piority">
+                              <legend>Piority:</legend>
+                              <label>
+                                  <input type="radio" name="piority"  value="high" class="high" data-edit="piority">
+                                  High
+                              </label>
+                              <label>
+                                  <input type="radio" name="piority" class="medium" value="medium" data-edit="piority" >
+                                  Medium
+                              </label>
+                              <label>
+                                  <input type="radio" name="piority" class="low" value="low" data-edit="piority">
+                                  Low
+                              </label>
+                          </div>
+                          <div class="modal-btn">
+                              <button class="btn save-edit-btn" data-id=${todo.id}>Save Edit</button>
+                          </div>
                     </div>
             </form>
         </dialog>
