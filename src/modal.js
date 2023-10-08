@@ -1,3 +1,6 @@
+const closeModalBtn = document.querySelectorAll('.close-modal');
+const content = document.getElementById('content');
+
 function showModal(e) {
   let target = e.target;
   let openModalBtns = target.classList.contains('open-modal-btn');
@@ -15,11 +18,8 @@ function closeModal() {
   modals.forEach((modal) => modal.close());
 }
 
-//add task modal
-const closeModalBtn = document.querySelectorAll('.close-modal');
-const main = document.getElementById('main');
 /* events */
-main.addEventListener('click', showModal);
+content.addEventListener('click', showModal);
 closeModalBtn.forEach((btn) => btn.addEventListener('click', closeModal));
 
 export { showModal, closeModal };
